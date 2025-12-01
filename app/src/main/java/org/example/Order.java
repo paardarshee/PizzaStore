@@ -10,6 +10,12 @@ public class Order {
     public ArrayList<String>drinks;
     public String promotion;
     public Order(){
+        this.toppings = new ArrayList<>();
+        this.desserts = new ArrayList<>();
+        this.drinks = new ArrayList<>();
+        this.pizza = "";
+        this.sauce = "";
+        this.promotion="default";
     }
     public String getPizza(){
         return this.pizza;

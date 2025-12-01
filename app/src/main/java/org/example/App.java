@@ -5,14 +5,19 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 public class App {
 
     public static void main(String[] args) {
+        try{
+
+        System.out.println("Welcome to PizzaHub");
         OrderService orderService = new OrderService();
         orderService.selectPizza("Regular");
         orderService.selectSauce("Marinara sauce");
-        orderService.addToppings(new ArrayList<String>(Arrays.asList("Mozzarella Cheese","Spinach")));
+        orderService.addToppings(new ArrayList<>(Arrays.asList("Mozzarella Cheese")));
         orderService.checkout();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
     }
 }

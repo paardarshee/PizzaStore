@@ -14,9 +14,6 @@ public class PromotionStore {
             promotions.put(promoCode,discount);
         }
     }
-    public double getDefaultPromotion(){
-        return promotions.get("default");
-    }
     public double getPromotion(String promoCode){
         return promotions.get(promoCode);
     }
