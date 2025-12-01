@@ -31,7 +31,7 @@ public class MenuStore {
     );
 
     public Map<String,Item> dessertStore = Map.of(
-            "lava Cake",new Item("Lava Cake",95),
+            "lava cake",new Item("Lava Cake",95),
             "chocolate brownie" , new Item("Chocolate brownie",86)
     );
 }

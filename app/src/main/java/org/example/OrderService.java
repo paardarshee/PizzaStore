@@ -41,7 +41,7 @@ public class OrderService {
             System.out.println(name + " not available");
         }
     }
-    public void addToppings(ArrayList<String> toppingNames){
+    public void addTopping(ArrayList<String> toppingNames){
         for(String toppingName:toppingNames){
             this.addTopping(toppingName);
         }
@@ -50,7 +50,7 @@ public class OrderService {
         if(menu.dessertStore.containsKey(name.toLowerCase()) && !order.getDesserts().contains(name)) {
             ArrayList<String> desserts = order.getDesserts();
             desserts.add(name.toLowerCase());
-            this.order.setToppings(desserts);
+            this.order.setDessert(desserts);
             System.out.println(name + " Added");
         }else {
             System.out.println(name + " not available");
@@ -60,7 +60,7 @@ public class OrderService {
         if(menu.drinkStore.containsKey(name.toLowerCase()) && !order.getDrinks().contains(name)) {
             ArrayList<String> drinks = order.getDrinks();
             drinks.add(name.toLowerCase());
-            this.order.setToppings(drinks);
+            this.order.setDrink(drinks);
             System.out.println(name + " Added");
         }else {
             System.out.println(name + " not available");
@@ -78,31 +78,37 @@ public class OrderService {
         }
         return total;
     }
-    public void checkout(){
+    public double getFinalPrice(){
         if(order.getPizza().isEmpty()){
             System.out.println("Base Pizza Type Missing");
         }
         else if(order.getToppings().isEmpty()){
             System.out.println("Add at least one topping");
-        }else{
+        }else {
             double total = 0;
             Item pizza = menu.pizzaStore.get(order.getPizza());
             total += pizza.getPrice();
-            for(String toppingName : order.getToppings()){
+            for (String toppingName : order.getToppings()) {
                 Item topping = menu.toppingStore.get(toppingName);
                 total += topping.getPrice();
             }
-            for(String dessertName : order.getDesserts()){
+            for (String dessertName : order.getDesserts()) {
                 Item dessert = menu.dessertStore.get(dessertName);
                 total += dessert.getPrice();
             }
-            for(String drinkName : order.getDrinks()){
-                Item drink = menu.toppingStore.get(drinkName);
+            for (String drinkName : order.getDrinks()) {
+//                System.out.println(drinkName);
+                Item drink = menu.drinkStore.get(drinkName);
                 total += drink.getPrice();
             }
 
             double discountedPrice = this.applyDiscount(total);
-            System.out.println("Price After Discount "+discountedPrice);
+            return discountedPrice;
         }
+        return 0;
+    }
+    public void checkout(){
+        double discountedPrice = this.getFinalPrice();
+        System.out.println("Your order costs "+discountedPrice);
     }
 }

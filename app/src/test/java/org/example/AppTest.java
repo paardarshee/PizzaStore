@@ -4,11 +4,30 @@
 package org.example;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test public void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull("app should have a greeting", classUnderTest.getGreeting());
+    @Test
+    public void Sample2() {
+        OrderService orderService = new OrderService();
+        orderService.selectPizza("Whole wheat");
+        orderService.selectSauce("Pesto sauce");
+        orderService.addTopping(new ArrayList<>(Arrays.asList("Mozzarella Cheese","Pepperoni")));
+        orderService.addDrink("Coke");
+        orderService.addDesert("Lava Cake");
+        assertEquals(251.75,orderService.getFinalPrice(),0.1);
+    }
+
+    @Test
+    public void Sample1(){
+        OrderService orderService = new OrderService();
+        orderService.selectPizza("Regular");
+        orderService.selectSauce("Marinara sauce");
+        orderService.addTopping("Mozzarella Cheese");
+        assertEquals(80,orderService.getFinalPrice(),0.0);
     }
 }

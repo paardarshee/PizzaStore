@@ -44,10 +44,10 @@ public class Order {
     public void setToppings(ArrayList<String>toppings){
         this.toppings = toppings;
     }
-    public void getDessert(ArrayList<String> desserts){
+    public void setDessert(ArrayList<String> desserts){
         this.desserts = desserts;
     }
-    public void getDrink(ArrayList<String> drinks){
+    public void setDrink(ArrayList<String> drinks){
         this.drinks = drinks;
     }
     public void setPromotion(String promotion){

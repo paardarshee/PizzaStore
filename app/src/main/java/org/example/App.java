@@ -12,9 +12,11 @@ public class App {
 
         System.out.println("Welcome to PizzaHub");
         OrderService orderService = new OrderService();
-        orderService.selectPizza("Regular");
-        orderService.selectSauce("Marinara sauce");
-        orderService.addToppings(new ArrayList<>(Arrays.asList("Mozzarella Cheese")));
+        orderService.selectPizza("Whole wheat");
+        orderService.selectSauce("Pesto sauce");
+        orderService.addTopping(new ArrayList<>(Arrays.asList("Mozzarella Cheese","Pepperoni")));
+        orderService.addDrink("Coke");
+        orderService.addDesert("Lava Cake");
         orderService.checkout();
         }catch(Exception ex){
             ex.printStackTrace();
